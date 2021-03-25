@@ -13,8 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ApiResource(
  *   normalizationContext={"groups"={"permission:read"}},
  *   denormalizationContext={"groups"={"permission:write"}},
- *   collectionOperations={"get"},
- *   itemOperations={"get", "put", "delete"}
+ *
+ *
  *     )
  * @ORM\Entity(repositoryClass=ProductRepository::class)
  */
@@ -35,40 +35,37 @@ class Product
     /**
      * @ORM\Column(type="boolean")
      */
-    private $active;
+    private $active=0;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=false)
+     * @ORM\Column(type="string", length=255)
      *
      *
      *@Groups("permission:read")
      *
      */
-    private $name;
+    private $name=" ";
 
     /**
      * @ORM\Column(type="string", length=255)
      *
      * @Groups("permission:read")
-     * @Groups("permission:write")
      */
-    private $url;
+    private $url=" ";
 
     /**
-     * @ORM\Column(type="text", nullable=false)
+     * @ORM\Column(type="text")
      *
      * @Groups("permission:read")
      *
      */
-    private $description;
+    private $description=" ";
 
     /**
      * @ORM\ManyToOne(targetEntity=Brand::class, inversedBy="products")
      * @ORM\JoinColumn(nullable=false)
      *
      * @Groups("permission:read")
-     * @Groups("permission:write")
-     *
      */
     private $brand_id;
 
@@ -136,12 +133,6 @@ class Product
 
         return $this;
     }
-
-    /**
-     *
-     *
-     * @Groups("permission:read")
-     */
 
     public function getBrandId(): ?Brand
     {

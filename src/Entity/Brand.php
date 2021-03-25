@@ -9,14 +9,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource(
- *
- *   normalizationContext={"groups"={"permission:read"}},
- *   denormalizationContext={"groups"={"permission:write"}},
- *   collectionOperations={"get"},
- *   itemOperations={"get", "put", "delete"}
- *
- * )
+ * @ApiResource()
  * @ORM\Entity(repositoryClass=BrandRepository::class)
  */
 class Brand
