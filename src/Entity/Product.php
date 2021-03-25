@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\ProductRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -44,6 +46,16 @@ class Product
      * @ORM\JoinColumn(nullable=false)
      */
     private $brand_id;
+
+    /**
+     * @ORM\OneToMany(targetEntity=ProductsCategories::class, mappedBy="product_id")
+     */
+    private $productsCategories;
+
+    public function __construct()
+    {
+        $this->productsCategories = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -106,6 +118,36 @@ class Product
     public function setBrandId(?Brand $brand_id): self
     {
         $this->brand_id = $brand_id;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ProductsCategories[]
+     */
+    public function getProductsCategories(): Collection
+    {
+        return $this->productsCategories;
+    }
+
+    public function addProductsCategory(ProductsCategories $productsCategory): self
+    {
+        if (!$this->productsCategories->contains($productsCategory)) {
+            $this->productsCategories[] = $productsCategory;
+            $productsCategory->setProductId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProductsCategory(ProductsCategories $productsCategory): self
+    {
+        if ($this->productsCategories->removeElement($productsCategory)) {
+            // set the owning side to null (unless already changed)
+            if ($productsCategory->getProductId() === $this) {
+                $productsCategory->setProductId(null);
+            }
+        }
 
         return $this;
     }
