@@ -6,10 +6,16 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\ProductRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *   normalizationContext={"groups"={"permission:read"}},
+ *   denormalizationContext={"groups"={"permission:write"}},
+ *   collectionOperations={"get"},
+ *   itemOperations={"get", "put", "delete"}
+ *     )
  * @ORM\Entity(repositoryClass=ProductRepository::class)
  */
 class Product
@@ -18,6 +24,11 @@ class Product
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     *
+     * @Groups("permission:read")
+     *
+     *
+     *
      */
     private $id;
 
@@ -27,28 +38,44 @@ class Product
     private $active;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=false)
+     *
+     *
+     *@Groups("permission:read")
+     *
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *
+     * @Groups("permission:read")
+     * @Groups("permission:write")
      */
     private $url;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=false)
+     *
+     * @Groups("permission:read")
+     *
      */
     private $description;
 
     /**
      * @ORM\ManyToOne(targetEntity=Brand::class, inversedBy="products")
      * @ORM\JoinColumn(nullable=false)
+     *
+     * @Groups("permission:read")
+     * @Groups("permission:write")
+     *
      */
     private $brand_id;
 
     /**
      * @ORM\OneToMany(targetEntity=ProductsCategories::class, mappedBy="product_id")
+     *
+     * @Groups("permission:read")
      */
     private $productsCategories;
 
@@ -109,6 +136,12 @@ class Product
 
         return $this;
     }
+
+    /**
+     *
+     *
+     * @Groups("permission:read")
+     */
 
     public function getBrandId(): ?Brand
     {
