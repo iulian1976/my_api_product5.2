@@ -6,16 +6,10 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\ProductRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource(
- *   normalizationContext={"groups"={"permission:read"}},
- *   denormalizationContext={"groups"={"permission:write"}},
- *
- *
- *     )
+ * @ApiResource()
  * @ORM\Entity(repositoryClass=ProductRepository::class)
  */
 class Product
@@ -24,55 +18,37 @@ class Product
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     *
-     * @Groups("permission:read")
-     *
-     *
-     *
      */
     private $id;
 
     /**
      * @ORM\Column(type="boolean")
      */
-    private $active=0;
+    private $active;
 
     /**
      * @ORM\Column(type="string", length=255)
-     *
-     *
-     *@Groups("permission:read")
-     *
      */
-    private $name=" ";
+    private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
-     *
-     * @Groups("permission:read")
      */
-    private $url=" ";
+    private $url;
 
     /**
      * @ORM\Column(type="text")
-     *
-     * @Groups("permission:read")
-     *
      */
-    private $description=" ";
+    private $description;
 
     /**
      * @ORM\ManyToOne(targetEntity=Brand::class, inversedBy="products")
      * @ORM\JoinColumn(nullable=false)
-     *
-     * @Groups("permission:read")
      */
     private $brand_id;
 
     /**
      * @ORM\OneToMany(targetEntity=ProductsCategories::class, mappedBy="product_id")
-     *
-     * @Groups("permission:read")
      */
     private $productsCategories;
 
