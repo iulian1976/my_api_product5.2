@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="404c56ca-aca4-468f-9212-b2a8df1b3a20" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Brand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Brand.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/ProductsCategories.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/ProductsCategories.php" afterDir="false" />
     </list>
@@ -158,8 +159,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Entity/ProductsCategories.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+            <state relative-caret-position="192">
+              <caret line="10" column="2" selection-start-line="10" selection-start-column="2" selection-end-line="11" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -372,12 +373,12 @@
       <option name="presentableId" value="Default" />
       <updated>1616659685807</updated>
       <workItem from="1616659686983" duration="5602000" />
-      <workItem from="1616680454585" duration="9463000" />
+      <workItem from="1616680454585" duration="9729000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15065000" />
+    <option name="totallyTimeSpent" value="15331000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -447,8 +448,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Entity/ProductsCategories.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+        <state relative-caret-position="192">
+          <caret line="10" column="2" selection-start-line="10" selection-start-column="2" selection-end-line="11" selection-end-column="29" />
         </state>
       </provider>
     </entry>
