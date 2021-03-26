@@ -14,11 +14,10 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
  * @ApiResource(
  *     normalizationContext={"groups"={"permission:read"}},
  *     denormalizationContext={"groups"={"permission:write"}},
- *
- *
  * )
  * @ORM\Entity(repositoryClass=ProductRepository::class)
  */
+
 class Product
 {
     /**
@@ -76,22 +75,6 @@ class Product
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    /**
-     *
-     * 
-     *
-     */
-
-    private $idmd5;
-
-    public function getIdMd5(UserPasswordEncoderInterface $encoder): ?int
-    {
-
-        $encoder=$encoder->encodePassword($this->idmd5, $this->id);
-        $this->idmd5=strval($encoder);
-        return  $this->idmd5;
     }
 
     public function getActive(): ?bool
