@@ -8,8 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ApiResource(
- *     collectionOperations={"get"},
- *     itemOperations={"get"}
+ *     collectionOperations={},
+ *     itemOperations={}
  * )
  * @ORM\Entity(repositoryClass=ProductsCategoriesRepository::class)
  */
