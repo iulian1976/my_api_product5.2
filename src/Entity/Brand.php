@@ -6,12 +6,18 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\BrandRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ApiResource(
- *     collectionOperations={"get"},
- *     itemOperations={"get"}
+ *
+ *     normalizationContext={"groups"={"permission:read"}},
+ *     denormalizationContext={"groups"={"permission:write"}},
+ *
+ *
+ *
+ *
  * )
  * @ORM\Entity(repositoryClass=BrandRepository::class)
  */
@@ -21,11 +27,14 @@ class Brand
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     *
+     *
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"permission:read", "permission:read"})
      */
     private $name;
 
@@ -44,10 +53,20 @@ class Brand
         return $this->id;
     }
 
+    /**
+     *
+     * @Groups({"permission:read", "permission:write"})
+     */
+
     public function getName(): ?string
     {
         return $this->name;
     }
+
+    /**
+     *
+     * @Groups({"permission:read", "permission:write"})
+     */
 
     public function setName(string $name): self
     {
