@@ -34,7 +34,7 @@ class Brand
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"permission:read", "permission:read"})
+     * @Groups({"permission:read", "permission:write"})
      */
     private $name;
 
