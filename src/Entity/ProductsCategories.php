@@ -7,7 +7,10 @@ use App\Repository\ProductsCategoriesRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     collectionOperations={"get"},
+ *     itemOperations={"get"}
+ * )
  * @ORM\Entity(repositoryClass=ProductsCategoriesRepository::class)
  */
 class ProductsCategories
