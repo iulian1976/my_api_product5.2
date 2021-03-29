@@ -15,9 +15,6 @@ use Doctrine\ORM\Mapping as ORM;
  *     normalizationContext={"groups"={"permission:read"}},
  *     denormalizationContext={"groups"={"permission:write"}},
  *
- *
- *
- *
  * )
  * @ORM\Entity(repositoryClass=BrandRepository::class)
  */

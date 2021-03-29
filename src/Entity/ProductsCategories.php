@@ -16,8 +16,8 @@ use ApiPlatform\Core\Annotation\ApiResource;
  *     normalizationContext={"groups"={"permission:read"}},
  *     denormalizationContext={"groups"={"permission:write"}},
  *
- *     collectionOperations={},
- *     itemOperations={}
+ *
+ *
  * )
  * @ORM\Entity(repositoryClass=ProductsCategoriesRepository::class)
  */
@@ -50,10 +50,22 @@ class ProductsCategories
         return $this->id;
     }
 
+    /**
+     *
+     *@Groups({"permission:read"})
+     *
+     */
+
     public function getProductId(): ?Product
     {
         return $this->product_id;
     }
+
+    /**
+     *
+     *@Groups({"permission:read"})
+     *
+     */
 
     public function setProductId(?Product $product_id): self
     {
@@ -62,10 +74,22 @@ class ProductsCategories
         return $this;
     }
 
+    /**
+     *
+     *@Groups({"permission:read"})
+     *
+     */
+
     public function getCategoriesId(): ?Category
     {
         return $this->categories_id;
     }
+
+    /**
+     *
+     *@Groups({"permission:read"})
+     *
+     */
 
     public function setCategoriesId(?Category $categories_id): self
     {

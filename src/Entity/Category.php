@@ -6,10 +6,15 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\CategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *
+ *     normalizationContext={"groups"={"permission:read"}},
+ *     denormalizationContext={"groups"={"permission:write"}},
+ * )
  * @ORM\Entity(repositoryClass=CategoryRepository::class)
  */
 class Category
@@ -23,11 +28,13 @@ class Category
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"permission:read"})
      */
     private $name;
 
     /**
      * @ORM\OneToMany(targetEntity=ProductsCategories::class, mappedBy="categories_id")
+     * @Groups({"permission:read"})
      */
     private $productsCategories;
 
@@ -36,10 +43,20 @@ class Category
         $this->productsCategories = new ArrayCollection();
     }
 
+    /**
+     *
+     * @Groups({"permission:read"})
+     */
+
     public function getId(): ?int
     {
         return $this->id;
     }
+
+    /**
+     *
+     * @Groups({"permission:read"})
+     */
 
     public function getName(): ?string
     {
@@ -55,6 +72,8 @@ class Category
 
     /**
      * @return Collection|ProductsCategories[]
+     * @Groups({"permission:read"})
+     *
      */
     public function getProductsCategories(): Collection
     {
