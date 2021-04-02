@@ -139,6 +139,7 @@ class Product
 
     /**
      * @return Collection|ProductsCategories[]
+     * @Groups({"permission:read"})   
      */
     public function getProductsCategories(): Collection
     {
